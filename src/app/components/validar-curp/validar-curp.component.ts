@@ -59,7 +59,7 @@ export class ValidarCURPComponent {
 
   private calcularEdad(curp: string): number {
     const fechaNacimiento = new Date();
-    fechaNacimiento.setFullYear(parseInt('19' + curp.substr(4, 2)));
+    const añoNacimiento = parseInt(curp.substr(4, 2));
     fechaNacimiento.setMonth(parseInt(curp.substr(6, 2)) - 1);
     fechaNacimiento.setDate(parseInt(curp.substr(8, 2)));
 
