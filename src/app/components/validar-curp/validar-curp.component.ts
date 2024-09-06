@@ -11,6 +11,10 @@ export class ValidarCURPComponent {
 
   constructor(private messageService: MessageService) { }
 
+  onCurpChange(value: string) {
+    this.curp = value.toUpperCase().replace(/\s/g, '');
+  }
+
   private mostrarError(mensaje: string) {
     this.messageService.add({ severity: 'error', summary: 'Error', detail: mensaje });
   }

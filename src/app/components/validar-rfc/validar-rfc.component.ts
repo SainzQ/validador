@@ -11,4 +11,12 @@ export class ValidarRFCComponent {
 
   constructor(private messageService: MessageService) {}
 
+  private mostrarError(mensaje: string) {
+    this.messageService.add({ severity: 'error', summary: 'Error', detail: mensaje });
+  }
+
+  private mostrarExito(mensaje: string) {
+    this.messageService.add({ severity: 'success', summary: 'Éxito', detail: mensaje });
+  }
+
 }
