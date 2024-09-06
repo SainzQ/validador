@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { MessageService } from 'primeng/api';
 
 @Component({
@@ -8,6 +8,7 @@ import { MessageService } from 'primeng/api';
 })
 export class ValidarCURPComponent {
   curp: string = '';
+  @Output() curpValidado = new EventEmitter<string>();
 
   constructor(private messageService: MessageService) { }
 
@@ -124,5 +125,6 @@ export class ValidarCURPComponent {
 
     const edad = this.calcularEdad(this.curp);
     this.mostrarExito(`CURP validado. Edad calculada: ${edad} años.`);
+    this.curpValidado.emit(this.curp);
   }
 }
