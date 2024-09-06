@@ -9,7 +9,7 @@
     <br>
     <div class="mb-4">
         <span class="p-float-label">
-            <input id="curp" type="text" pInputText [(ngModel)]="curp" />
+            <input id="curp" type="text" pInputText [(ngModel)]="curp" (ngModelChange)="curp = $event.toUpperCase()"/>
             <label for="curp">CURP</label>
         </span>
     </div>
