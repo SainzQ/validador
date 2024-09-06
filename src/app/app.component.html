@@ -1,2 +1,2 @@
-<app-validar-curp></app-validar-curp>
-<app-validar-rfc></app-validar-rfc>
+<app-validar-curp (curpValidado)="onCurpValidado($event)"></app-validar-curp>
+<app-validar-rfc [curpValidado]="curpValidado"></app-validar-rfc>

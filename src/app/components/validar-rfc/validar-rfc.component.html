@@ -1,18 +1,19 @@
 <div class="p-4">
     <h2>Validación de RFC</h2>
     <p>El RFC se compone de 13 caracteres alfanuméricos formados por las iniciales del nombre de la persona física o
-        moral, seguido de la fecha de nacimiento o constitución y 3 caracteres más llamados “homoclave” que el SAT
-        otorga y revisa para que el RFC sea una clave única e irrepetible entre todos los contribuyentes del país.
+        moral, seguido de la fecha de nacimiento o constitución y 3 caracteres (Letras o Numeros) más llamados 
+        “homoclave” que el SAT otorga y revisa para que el RFC sea una clave única e irrepetible entre todos 
+        los contribuyentes del país.
     </p>
     <br>
     <div class="mb-4">
         <span class="p-float-label">
-            <input id="rfc" type="text" pInputText [(ngModel)]="rfc" />
+            <input id="rfc" type="text" pInputText [(ngModel)]="rfc" (ngModelChange)="onRfcChange($event)" />
             <label for="rfc">RFC</label>
         </span>
     </div>
     <br>
-    <p-button label="Validar RFC" (onClick)="validarRFC()"></p-button>
+    <p-button label="Validar RFC" (onClick)="validarRFC()" ></p-button>
 
     <p-messages></p-messages>
 </div>
