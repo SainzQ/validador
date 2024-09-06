@@ -1,8 +1,12 @@
 <div class="p-4">
     <h2>Validación de CURP</h2>
-    <p>Son 18 elementos de un código alfanumérico; 16 de ellos son la primera letra y vocal interna del primer apellido, primera letra del segundo apellido, primera letra del primer nombre, año, mes y día de la fecha de nacimiento; género, las dos letras del lugar de nacimiento de acuerdo con el código de la entidad federativa. 
-        Después, las primeras consonantes internas de cada uno de los apellidos y nombre y, por último, los dos primeros dígitos que son asignados por el Registro Nacional de Población. 
-        </p>
+    <p>Son 18 elementos de un código alfanumérico; 16 de ellos son la primera letra y vocal interna del primer apellido,
+        primera letra del segundo apellido, primera letra del primer nombre, año, mes y día de la fecha de nacimiento;
+        género ("H" o "M"), las dos letras del lugar de nacimiento de acuerdo con el código de la entidad federativa.
+        Después, las primeras consonantes internas de cada uno de los apellidos y nombre y, por último, los dos primeros
+        dígitos que son asignados por el Registro Nacional de Población.
+    </p>
+    <br>
     <div class="mb-4">
         <span class="p-float-label">
             <input id="curp" type="text" pInputText [(ngModel)]="curp" />

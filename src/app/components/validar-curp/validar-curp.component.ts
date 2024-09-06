@@ -53,15 +53,35 @@ export class ValidarCURPComponent {
     if (mes < 1 || mes > 12) return false;
     if (dia < 1 || dia > 31) return false;
 
-    
-    return true;
+    /*verifica de manera extrcita la fecha
+   error anterior de siglos y bisiestos
+   Problema de StackOverFlow https://es.stackoverflow.com/questions/189725/ejercicio-matem%C3%A1tico-javascript
+   */ 
+    const añoActual = new Date().getFullYear();
+    const siglo = año > (añoActual - 2000) ? 19 : 20;
+    const anioCompleto = siglo * 100 + año;
+
+    const esBisiesto = (año: number) => (año % 4 === 0 && año % 100 !== 0) || (año % 400 === 0);
+    const diasPorMes = [31, esBisiesto(anioCompleto) ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+    return dia <= diasPorMes[mes - 1];
   }
 
   private calcularEdad(curp: string): number {
     const fechaNacimiento = new Date();
-    const añoNacimiento = parseInt(curp.substr(4, 2));
-    fechaNacimiento.setMonth(parseInt(curp.substr(6, 2)) - 1);
-    fechaNacimiento.setDate(parseInt(curp.substr(8, 2)));
+    const anioNacimiento = parseInt(curp.substr(4, 2));
+    const mesNacimiento = parseInt(curp.substr(6, 2));
+    const diaNacimiento = parseInt(curp.substr(8, 2));
+
+    /*verifica de manera extrcita la fecha
+    error anterior de siglos y bisiestos
+    Problema de StackOverFlow https://es.stackoverflow.com/questions/189725/ejercicio-matem%C3%A1tico-javascript
+    */
+    const añoActual = new Date().getFullYear();
+    const siglo = anioNacimiento > (añoActual - 2000) ? 19 : 20;
+
+    fechaNacimiento.setFullYear(siglo * 100 + anioNacimiento);
+    fechaNacimiento.setMonth(mesNacimiento - 1);
+    fechaNacimiento.setDate(diaNacimiento);
 
     const hoy = new Date();
     let edad = hoy.getFullYear() - fechaNacimiento.getFullYear();
@@ -79,30 +99,26 @@ export class ValidarCURPComponent {
     }
 
     if (!this.validarFormatoCURP(this.curp)) {
-      this.mostrarError('El formato de la CURP no es válido.');
+      this.mostrarError('El formato de la CURP no es valido, verfica que el formato cumpla todas las restricciones.');
       return;
     }
 
     if (!this.validarSexoCURP(this.curp)) {
-      this.mostrarError('El identificador de sexo en la CURP no es válido.');
+      this.mostrarError('El identificador de sexo en la CURP no es valido.');
       return;
     }
 
     if (!this.validarEstadoCURP(this.curp)) {
-      this.mostrarError('El identificador de estado en la CURP no es válido.');
+      this.mostrarError('El identificador de estado en la CURP no es valido.');
       return;
     }
 
     if (!this.validarFechaCURP(this.curp)) {
-      this.mostrarError('La fecha en la CURP no es válida.');
+      this.mostrarError('La fecha en la CURP no es valida. Vuelve a comprobar Fecha (Tomando en cuenta años bisiestos)');
       return;
     }
 
     const edad = this.calcularEdad(this.curp);
-    this.mostrarExito(`CURP válida. Edad calculada: ${edad} años.`);
+    this.mostrarExito(`CURP validado. Edad calculada: ${edad} años.`);
   }
-
-  
-
-  
 }
