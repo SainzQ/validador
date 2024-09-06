@@ -24,12 +24,11 @@ export class ValidarCURPComponent {
     /*reglas del regEx, para Alonso y Miranda https://regexr.com/ pagina para testeo de regex
     [A-Z]{4}: Cuatro letras mayuculas seguidas.
     \d{6}: Seis numeros seguidos.
-    [A-Z]: Una sola letra.
-    [A-Z]{5}: Cinco letras mayusculas seguidas.
+    [A-Z]{6}: Cinco letras mayusculas seguidas.
     [0-9A-Z]: Un solo carcter que puede ser numero o letra.
     \d: Un solo numero*/
 
-    const regex = /^[A-Z]{4}\d{6}[A-Z][A-Z]{5}[0-9A-Z]\d$/;
+    const regex = /^[A-Z]{4}\d{6}[A-Z]{6}[0-9A-Z]\d$/;
     return regex.test(curp);
   }
 
