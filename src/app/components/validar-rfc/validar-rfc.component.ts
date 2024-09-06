@@ -13,6 +13,12 @@ export class ValidarRFCComponent {
   constructor(private messageService: MessageService) { }
 
   onRfcChange(value: string) {
+    
+    /*Reglas para inputText:
+    toUpperCase vuelve mayusculas todas las letras.
+    .replace(/\s/g, ''); remplaza todos los espacios, eliminandolos.
+    */
+
     this.rfc = value.toUpperCase().replace(/\s/g, '');
   }
 
@@ -25,6 +31,13 @@ export class ValidarRFCComponent {
   }
 
   private validarFormatoRFC(rfc: string): boolean {
+
+    /*reglas del regEx, para Alonso y Miranda https://regexr.com/ pagina para testeo de regex
+    [A-Z]{4}: Cuatro letras mayuculas seguidas.
+    \d{6}: Seis numeros seguidos.
+    [0-9A-Z]{3}: Tres carcteres que puede ser numero o letra.
+    */
+
     const regex = /^[A-Z]{4}\d{6}[0-9A-Z]{3}$/;
     return regex.test(rfc);
   }

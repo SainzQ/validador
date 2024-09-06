@@ -13,6 +13,12 @@ export class ValidarCURPComponent {
   constructor(private messageService: MessageService) { }
 
   onCurpChange(value: string) {
+
+    /*Reglas para inputText:
+    toUpperCase vuelve mayusculas todas las letras.
+    .replace(/\s/g, ''); remplaza todos los espacios, eliminandolos.
+    */
+
     this.curp = value.toUpperCase().replace(/\s/g, '');
   }
 
