@@ -45,7 +45,7 @@ Este componente permite la validación del RFC, comparándolo también con el CU
     const esBisiesto = (año: number) => (año % 4 === 0 && año % 100 !== 0) || (año % 400 === 0);
     const diasPorMes = [31, esBisiesto(anioCompleto) ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
     return dia <= diasPorMes[mes - 1];
-  }
+    }
   Este fragmento verifica si la fecha de nacimiento en el CURP es válida considerando reglas de formato, límites de día y mes, y años bisiestos.
 
 # Tecnologías Utilizadas
