@@ -1,8 +1,8 @@
 
 # INTEGRANTES
-  Alonso Daniel Lopez Silva
-  Cristopher Alexis Miranda Diaz
-  Jose Regino Gonzalez
+    .Alonso Daniel Lopez Silva
+     .Cristopher Alexis Miranda Diaz
+      .Jose Regino Gonzalez
 
 # Descripción del Proyecto
   Este proyecto implementa la validación de CURP y RFC utilizando Angular y PrimeNG. La lógica está estructurada en dos componentes principales: uno para validar CURP y otro   para validar RFC. Ambos componentes se encargan de verificar la integridad y el formato de los datos ingresados según las reglas establecidas para cada uno.
@@ -29,7 +29,8 @@ Este componente permite la validación del RFC, comparándolo también con el CU
   Coincidencia con CURP: Los primeros 10 caracteres del RFC deben coincidir con los primeros 10 caracteres del CURP previamente validado.
   Código Destacado
   Validación de la fecha del CURP:
-  private validarFechaCURP(curp: string): boolean {
+  
+     private validarFechaCURP(curp: string): boolean {
     const fecha = curp.substr(4, 6);
     const año = parseInt(fecha.substr(0, 2));
     const mes = parseInt(fecha.substr(2, 2));
@@ -49,9 +50,9 @@ Este componente permite la validación del RFC, comparándolo también con el CU
   Este fragmento verifica si la fecha de nacimiento en el CURP es válida considerando reglas de formato, límites de día y mes, y años bisiestos.
 
 # Tecnologías Utilizadas
-  Angular: Framework principal para el desarrollo del frontend.
-  PrimeNG: Librería de componentes de UI utilizada para mostrar mensajes de éxito y error.
-  TypeScript: Lenguaje utilizado para la lógica de validación.
+1.  Angular: Framework principal para el desarrollo del frontend.
+2.  PrimeNG: Librería de componentes de UI utilizada para mostrar mensajes de éxito y error.
+3.  TypeScript: Lenguaje utilizado para la lógica de validación.
   
  # Instalación y Uso
   Ejecutar npm install para instalar las dependencias.
