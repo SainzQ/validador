@@ -1,31 +1,59 @@
+
 # INTEGRANTES
 Alonso Daniel Lopez Silva
 Cristopher Alexis Miranda Diaz
 Jose Regino Gonzalez
-# Validador
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.14.
+# Descripción del Proyecto
+Este proyecto implementa la validación de CURP y RFC utilizando Angular y PrimeNG. La lógica está estructurada en dos componentes principales: uno para validar CURP y otro para validar RFC. Ambos componentes se encargan de verificar la integridad y el formato de los datos ingresados según las reglas establecidas para cada uno.
 
-## Development server
+Componentes
+1. ValidarCURPComponent
+Este componente permite la validación de una CURP ingresada por el usuario. Implementa varias validaciones para asegurar que la CURP cumpla con el formato oficial.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Principales validaciones:
 
-## Code scaffolding
+Formato CURP: Asegura que el CURP tenga 18 caracteres y siga la estructura adecuada: cuatro letras, seis números (fecha de nacimiento), seis letras y números, y dos caracteres adicionales.
+Sexo: Verifica que el carácter en la posición 11 del CURP sea 'H' o 'M', lo que indica el sexo.
+Estado: Asegura que el identificador del estado sea uno válido dentro de la lista de códigos oficiales.
+Fecha de nacimiento: Comprueba que el año, mes y día en el CURP correspondan a una fecha válida, considerando incluso los años bisiestos.
+Edad: Calcula la edad de la persona a partir de la fecha de nacimiento proporcionada en el CURP.
+Cuando se valida correctamente, se emite un evento para informar al componente padre que el CURP ha sido validado.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+2. ValidarRFCComponent
+Este componente permite la validación del RFC, comparándolo también con el CURP validado previamente.
 
-## Build
+Principales validaciones:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Formato RFC: El RFC debe tener exactamente 13 caracteres y seguir un formato de cuatro letras, seis números, y tres caracteres adicionales.
+Coincidencia con CURP: Los primeros 10 caracteres del RFC deben coincidir con los primeros 10 caracteres del CURP previamente validado.
+Código Destacado
+Validación de la fecha del CURP:
+private validarFechaCURP(curp: string): boolean {
+  const fecha = curp.substr(4, 6);
+  const año = parseInt(fecha.substr(0, 2));
+  const mes = parseInt(fecha.substr(2, 2));
+  const dia = parseInt(fecha.substr(4, 2));
 
-## Running unit tests
+  if (mes < 1 || mes > 12) return false;
+  if (dia < 1 || dia > 31) return false;
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+  const añoActual = new Date().getFullYear();
+  const siglo = año > (añoActual - 2000) ? 19 : 20;
+  const anioCompleto = siglo * 100 + año;
 
-## Running end-to-end tests
+  const esBisiesto = (año: number) => (año % 4 === 0 && año % 100 !== 0) || (año % 400 === 0);
+  const diasPorMes = [31, esBisiesto(anioCompleto) ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+  return dia <= diasPorMes[mes - 1];
+}
+Este fragmento verifica si la fecha de nacimiento en el CURP es válida considerando reglas de formato, límites de día y mes, y años bisiestos.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Tecnologías Utilizadas
+Angular: Framework principal para el desarrollo del frontend.
+PrimeNG: Librería de componentes de UI utilizada para mostrar mensajes de éxito y error.
+TypeScript: Lenguaje utilizado para la lógica de validación.
+Instalación y Uso
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Ejecutar npm install para instalar las dependencias.
+Ejecutar ng serve para levantar el servidor de desarrollo.
+Este proyecto permite validar correctamente CURP y RFC, asegurando que ambos cumplen con los requisitos oficiales y que el RFC coincide con la CURP proporcionada.
