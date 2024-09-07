@@ -1,8 +1,8 @@
 
 # INTEGRANTES
-    .Alonso Daniel Lopez Silva
-     .Cristopher Alexis Miranda Diaz
-      .Jose Regino Gonzalez
+  1. Alonso Daniel Lopez Silva
+  2. Cristopher Alexis Miranda Diaz
+  3. Jose Regino Gonzalez
 
 # Descripción del Proyecto
   Este proyecto implementa la validación de CURP y RFC utilizando Angular y PrimeNG. La lógica está estructurada en dos componentes principales: uno para validar CURP y otro   para validar RFC. Ambos componentes se encargan de verificar la integridad y el formato de los datos ingresados según las reglas establecidas para cada uno.
@@ -55,6 +55,6 @@ Este componente permite la validación del RFC, comparándolo también con el CU
 3.  TypeScript: Lenguaje utilizado para la lógica de validación.
   
  # Instalación y Uso
-  Ejecutar npm install para instalar las dependencias.
-  Ejecutar ng serve para levantar el servidor de desarrollo.
-  Este proyecto permite validar correctamente CURP y RFC, asegurando que ambos cumplen con los requisitos oficiales y que el RFC coincide con la CURP proporcionada.
+1.  Ejecutar npm install para instalar las dependencias.
+2.  Ejecutar ng serve para levantar el servidor de desarrollo.
+3.  Este proyecto permite validar correctamente CURP y RFC, asegurando que ambos cumplen con los requisitos oficiales y que el RFC coincide con la CURP proporcionada.
