@@ -1,3 +1,7 @@
+# INTEGRANTES
+Alonso Daniel Lopez Silva
+Cristopher Alexis Miranda Diaz
+Jose Regino Gonzalez
 # Validador
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.14.
